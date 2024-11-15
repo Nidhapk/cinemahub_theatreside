@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "7311521816",
+    "project_id": "online-booking-b241b",
+    "storage_bucket": "online-booking-b241b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7311521816:android:abf24cc78e28b6e8392b6d",
+        "android_client_info": {
+          "package_name": "com.onlinebooking.adminside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7311521816-hnaeuv87gjam819ooss3jk6s137bg5l5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onlinebooking.adminside",
+            "certificate_hash": "4a0de55e17c1939797d329c5d7756f546d44d5c6"
+          }
+        },
+        {
+          "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCCewrSKU1heeZpysd-xo7EDd-45L9aNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7311521816-2suorehkrn6dvde9frjt4kc1d4ugjuah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.userside"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7311521816:android:80a338348212f6c7392b6d",
+        "android_client_info": {
+          "package_name": "com.onlinebooking.theatreside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7311521816-brckn3945k8h9eii7t14nj6e8l46udbm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onlinebooking.theatreside",
+            "certificate_hash": "4a0de55e17c1939797d329c5d7756f546d44d5c6"
+          }
+        },
+        {
+          "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCCewrSKU1heeZpysd-xo7EDd-45L9aNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7311521816-2suorehkrn6dvde9frjt4kc1d4ugjuah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.userside"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7311521816:android:737f6bab3d7bd9b3392b6d",
+        "android_client_info": {
+          "package_name": "com.onlinebooking.userside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7311521816-g8ele8g64709hjfuec6tbtp126be6l3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onlinebooking.userside",
+            "certificate_hash": "4a0de55e17c1939797d329c5d7756f546d44d5c6"
+          }
+        },
+        {
+          "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCCewrSKU1heeZpysd-xo7EDd-45L9aNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7311521816-fjkuqih3cm045vhm7310pdtp2sngvcci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7311521816-2suorehkrn6dvde9frjt4kc1d4ugjuah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.userside"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
