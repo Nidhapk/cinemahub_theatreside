@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onlinebooking_theatreside/presentation/theme/app_colors.dart';
 
 Widget roomContainer(BuildContext context,
     {String? text,
@@ -20,14 +21,13 @@ Widget roomContainer(BuildContext context,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           PopupMenuButton<int>(
+            iconColor: grey,
             onSelected: (value) {
               if (value == 1) {
                 editonTap!();
-                print('Edit selected');
               } else if (value == 2) {
                 // Handle Delete action
                 deleteonTap!();
-                print('Delete selected');
               }
             },
             itemBuilder: (context) => [
@@ -43,9 +43,60 @@ Widget roomContainer(BuildContext context,
             icon: const Icon(Icons.more_vert),
           ),
           Center(
-              child: Text(text ?? ''
-                  //   room['roomName'] ?? ''
-                  )),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: grey),
+                      borderRadius: BorderRadius.circular(5)),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: grey),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
+                    Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: grey),
+                          borderRadius: BorderRadius.circular(4)),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: height * 0.015,
+          ),
+          Center(
+              child: Text(
+            text ?? '', style: const TextStyle(color: Colors.grey),
+            //   room['roomName'] ?? ''
+          )),
         ],
       ),
     ),

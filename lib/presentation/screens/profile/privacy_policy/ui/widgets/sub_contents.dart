@@ -8,8 +8,8 @@ Widget subContents({
   required final List<Map<String, String>> contentItems,
   required int itemCount,
 }) {
-  final width = MediaQuery.of(context).size.width;
-  final height = MediaQuery.of(context).size.height;
+ // final width = MediaQuery.of(context).size.width;
+ // final height = MediaQuery.of(context).size.height;
   return ListView.builder(
     physics: const NeverScrollableScrollPhysics(),
     shrinkWrap: true,

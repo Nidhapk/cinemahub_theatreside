@@ -22,13 +22,15 @@ class CustomTextForm extends StatelessWidget {
       this.onChanged,
       this.fillColor,
       this.hintColor,
-      this.onTap,this.readOnly});
+      this.onTap,
+      this.readOnly});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-      child: TextFormField(readOnly: readOnly ?? false,
+      child: TextFormField(
+        readOnly: readOnly ?? false,
         onTap: onTap,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         enabled: true,
@@ -42,7 +44,7 @@ class CustomTextForm extends StatelessWidget {
           constraints: const BoxConstraints(minHeight: 50),
           hintStyle: TextStyle(color: hintColor, fontSize: 14),
           hintText: labelText,
-          errorStyle: const TextStyle(fontSize: 20),
+          errorStyle: const TextStyle(fontSize: 10),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(

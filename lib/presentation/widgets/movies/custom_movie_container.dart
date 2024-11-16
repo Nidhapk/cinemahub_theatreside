@@ -32,7 +32,7 @@ Widget customMovieContainer(
               children: [
                 Container(
                   height: 110,
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration(color:const  Color.fromARGB(255, 58, 58, 58),
                     borderRadius: BorderRadius.circular(6),
                     image: DecorationImage(image: image, fit: BoxFit.cover),
                   ),

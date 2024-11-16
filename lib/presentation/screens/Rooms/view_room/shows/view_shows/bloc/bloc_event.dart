@@ -6,9 +6,10 @@ abstract class ShowEvent extends Equatable {
 }
 
 class FetchAllShows extends ShowEvent {
-  FetchAllShows();
+ final String roomId;
+  FetchAllShows(this.roomId);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [roomId];
 }
 
 class DeleteShowEvent extends ShowEvent {
@@ -17,5 +18,3 @@ class DeleteShowEvent extends ShowEvent {
   @override
   List<Object> get props => [showId];
 }
-
-

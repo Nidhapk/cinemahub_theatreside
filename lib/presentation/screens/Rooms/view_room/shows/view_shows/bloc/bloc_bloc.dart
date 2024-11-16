@@ -25,7 +25,7 @@ class ShowBloc extends Bloc<ShowEvent, ShowState> {
       FetchAllShows event, Emitter<ShowState> emit) async {
     emit(const ShowsLoadingState());
     try {
-      final shows = await MovieShowsRepository().getAllShows();
+      final shows = await MovieShowsRepository().getAllShows(event.roomId);
       emit(ShowsLoadedState(shows));
     } catch (e) {
       log('show error : $e');

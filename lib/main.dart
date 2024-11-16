@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onlinebooking_theatreside/data/repository/movie_repository.dart';
 import 'package:onlinebooking_theatreside/data/repository/rooms_repository.dart';
 import 'package:onlinebooking_theatreside/firebase_options.dart';
+import 'package:onlinebooking_theatreside/presentation/bookings/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/dashboard/widget/flilter_dropdown/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/dashboard/widget/overall_report/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/dashboard/widget/sales_report/bloc/blocbloc.dart';
@@ -19,6 +20,7 @@ import 'package:onlinebooking_theatreside/presentation/screens/forgetpass/bloc/b
 import 'package:onlinebooking_theatreside/presentation/screens/Drawer/home_screen.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/add_location/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/add_profile/bloc/bloc_bloc.dart';
+import 'package:onlinebooking_theatreside/presentation/screens/profile/change_password/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/view_profile/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/signin/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/signin/singn_in.dart';
@@ -102,7 +104,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SalesFilterBloc(),
-        ),BlocProvider(create: (context)=> OverallReportBloc())
+        ),
+        BlocProvider(create: (context) => OverallReportBloc()),
+        BlocProvider(create: (context) => BookingBloc()),
+        BlocProvider(create: (context) => ChangePasswordBloc())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

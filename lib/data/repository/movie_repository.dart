@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onlinebooking_theatreside/data/models/movie/movie_model.dart';
-import 'package:onlinebooking_theatreside/data/models/movie/movie_review_model.dart';
+
 
 class MovieDatabaserepository {
   final CollectionReference movieCollection =
@@ -19,8 +19,8 @@ class MovieDatabaserepository {
       }).toList();
 
       return movies;
-    } on FirebaseException catch (e) {
-      print('Error fetching movies: $e');
+    } on FirebaseException catch (_) {
+     
       rethrow;
     }
   }
@@ -33,8 +33,8 @@ class MovieDatabaserepository {
       } else {
         throw Exception("Movie not found");
       }
-    } on FirebaseException catch (e) {
-      print('Error fetching movie: $e');
+    } on FirebaseException catch (_) {
+
       rethrow;
     }
   }

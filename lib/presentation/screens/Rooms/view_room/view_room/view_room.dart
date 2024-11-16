@@ -55,12 +55,15 @@ class ViewRoomScreen extends StatelessWidget {
                 text: 'CLICK HERE'),
             addInterfaceContainer(
                 onTap: () {
-                  context.read<ShowBloc>().add(FetchAllShows());
-                  Navigator.of(context).push(MaterialPageRoute(
+                  context.read<ShowBloc>().add(FetchAllShows(roomId));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
                       builder: (context) => ViewShowsScreen(
-                            room: room,
-                            roomId: roomId,
-                          )));
+                        room: room,
+                        roomId: roomId,
+                      ),
+                    ),
+                  );
                 },
                 assetName: 'assets/movieShows.jpg',
                 gradientColors: [

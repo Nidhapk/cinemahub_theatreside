@@ -146,7 +146,7 @@ class TheatreBloc extends Bloc<TheatreEvent, TheatreState> {
       EditAccountEvent event, Emitter<TheatreState> emit) async {
     emit(EditingAccountState());
     try {
-      await TheatreDatabaseRepository().editAccount(event.name ?? '');
+      await TheatreDatabaseRepository().editAccount(event.name ?? '',event.phone??'');
       emit(EditeAccountSuccessState());
     } catch (e) {
       emit(EditAccountErrorState('Error : $e'));

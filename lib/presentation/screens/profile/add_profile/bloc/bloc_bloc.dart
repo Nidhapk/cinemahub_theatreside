@@ -13,7 +13,12 @@ Future<void> addProfile(
     AddProfileOnClickedEvent event, Emitter<AddProfilestate> emit) async {
   emit(const AddingProfileState());
   try {
-    await TheatreDatabaseRepository().addTheatreToFirestore(event.theatre);
+    final profile = await TheatreDatabaseRepository()
+        .uploadProfileImage(event.theatre.profileImage);
+         List<String> imageUrls =
+                                  await TheatreDatabaseRepository()
+                                      .uploadImages(event.theatre.images);
+    await TheatreDatabaseRepository().addTheatreToFirestore(event.theatre,profile,imageUrls);
     emit(const AddProfileSuccessState());
   } catch (e) {
     emit(AddProfileFailureState('Error: $e'));

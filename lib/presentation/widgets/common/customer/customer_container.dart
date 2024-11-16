@@ -7,12 +7,12 @@ Widget customerContainer(){
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 19, 19, 19),
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black,
                     spreadRadius: 2,
                     blurRadius: 15,
-                    offset: const Offset(2, 1),
+                    offset:  Offset(2, 1),
                   ),
                 ],
               ),
@@ -26,7 +26,7 @@ Widget customerContainer(){
                       width: 30,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 246, 105, 95),
+                        color: const Color.fromARGB(255, 246, 105, 95),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       margin: const EdgeInsets.symmetric(vertical: 4 / 2),

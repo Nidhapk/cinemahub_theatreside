@@ -30,7 +30,7 @@ class RoomsRepository {
   Future<void> deleteRoom(String roomId) async {
     try {
       await FirebaseFirestore.instance.collection('rooms').doc(roomId).delete();
-    } on FirebaseException catch (e) {
+    } on FirebaseException catch (_) {
       rethrow;
     }
   }
@@ -40,9 +40,9 @@ class RoomsRepository {
     await FirebaseFirestore.instance.collection('rooms').doc(roomId).update({
       'roomName': newName,
     });
-    print("Room name updated successfully.");
-  } on FirebaseException catch (e) {
-    print("Failed to update room name: $e");
+   
+  } on FirebaseException catch (_) {
+
     rethrow;
   }
 }

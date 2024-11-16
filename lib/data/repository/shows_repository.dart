@@ -18,7 +18,7 @@ class MovieShowsRepository {
     }
   }
 
-  Future<List<ShowModel>> getAllShows() async {
+  Future<List<ShowModel>> getAllShows(String roomId) async {
     try {
       final snapshot = await fireStoreCollection.get();
 
@@ -27,8 +27,11 @@ class MovieShowsRepository {
         log('Document data: $data'); // Log the document data
         return ShowModel.fromMap(data);
       }).toList();
+      final filteredShows = shows.where((show) {
+        return show.room.roomId == roomId;
+      }).toList();
 
-      return shows;
+      return filteredShows;
     } on FirebaseException catch (e) {
       log('Error fetching shows: $e');
       rethrow;

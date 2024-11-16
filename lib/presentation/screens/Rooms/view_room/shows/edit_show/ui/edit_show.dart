@@ -75,7 +75,7 @@ class EditShowsScreen extends StatelessWidget {
                 iconColor: green,
                 borderColor: green,
                 backgroundColor: black));
-            context.read<ShowBloc>().add(FetchAllShows());
+            context.read<ShowBloc>().add(FetchAllShows(roomId));
             Navigator.of(context).pop();
           } else if (state is ShowEditedErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(customSnackBar(
@@ -444,7 +444,7 @@ class EditShowsScreen extends StatelessWidget {
                                   showId: show.showId,
                                   movieName: movieController.text,
                                   poster: movie!.posterImage,
-                                  movie: movie!,theatre: TheatreModel.fromMap(theatre as Map<String,dynamic>),
+                                  movie: movie!,theatre: show.theatre,
                                   roomId: roomId,room: RoomModel(roomId: roomId, userId: roomModel.userId, roomName: roomModel.roomName,columns: roomModel.columns?? 0,rows: roomModel.rows?? 0,seatStates: roomModel.seatStates?? []),
                                   date: DateFormat("MMM dd yyy")
                                       .parse(dateController.text),

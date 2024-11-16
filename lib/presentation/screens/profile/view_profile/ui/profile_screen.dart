@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:onlinebooking_theatreside/data/models/theatre_model/thatre_model.dart';
 import 'package:onlinebooking_theatreside/data/repository/user_auth_repository.dart';
+import 'package:onlinebooking_theatreside/presentation/screens/profile/change_password/ui/change_password.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/privacy_policy/ui/privacy_policy.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/view_profile/bloc/bloc_bloc.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/view_profile/bloc/bloc_event.dart';
@@ -51,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
             images = theatre!.images;
             pickedImage = theatre!.profileImage;
             nameController.text = theatre!.name;
-            phoneController.text = theatre!.name;
+            phoneController.text = theatre!.phone;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +62,7 @@ class ProfileScreen extends StatelessWidget {
                 customProfileContainer(
                   onTap: () async {
                     final img = await _pickImage(context);
+                    // ignore: use_build_context_synchronously
                     context.read<TheatreBloc>().add(EditProfileEvent(img));
                   },
                   backgroundImage: theatre!.profileImage.isEmpty
@@ -78,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                               showModalBottomSheet(
                                   context: context,
                                   builder: (context) {
-                                    return Container(
+                                    return SizedBox(
                                       child: Stack(
                                         children: [
                                           Column(
@@ -113,6 +117,9 @@ class ProfileScreen extends StatelessWidget {
                                                       .read<TheatreBloc>()
                                                       .add(EditAccountEvent(
                                                           name: nameController
+                                                              .text
+                                                              .trim(),
+                                                          phone: phoneController
                                                               .text
                                                               .trim()));
                                                 },
@@ -150,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                                   break;
                                 default:
                                   title = 'Phone';
-                                  subtitle = theatre!.name;
+                                  subtitle = theatre!.phone;
                                   icon = Icons.phone_outlined;
                                   iconColor = green;
                               }
@@ -214,7 +221,7 @@ class ProfileScreen extends StatelessWidget {
                                   onTap = () => Navigator.of(context).push(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              PrivacyPolicyScreen()));
+                                              const PrivacyPolicyScreen()));
                                   title = 'Privacy policy';
                                   icon = Icons.lock;
                                   iconColor =
@@ -237,10 +244,15 @@ class ProfileScreen extends StatelessWidget {
                               void Function()? onTap;
                               switch (index) {
                                 case 0:
-                                  title = 'Delete Account';
-                                  icon = Icons.block_flipped;
-                                  iconColor =
-                                      const Color.fromARGB(255, 114, 112, 111);
+                                  onTap = () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ChangePassword()));
+                                  };
+                                  title = 'Change password';
+                                  icon = Icons.password_sharp;
+                                  iconColor = Colors.grey;
                                   break;
 
                                 default:
@@ -341,12 +353,13 @@ class ProfileScreen extends StatelessWidget {
                                         },
                                       ),
                                       ElevatedButton(
-                                          onPressed: () {
-                                            context
-                                                .read<TheatreBloc>()
-                                                .add(SaveImagesEvent(images));
-                                          },
-                                          child: const Text('save'))
+                                        onPressed: () {
+                                          context.read<TheatreBloc>().add(
+                                                SaveImagesEvent(images),
+                                              );
+                                        },
+                                        child: const Text('save'),
+                                      )
                                     ],
                                   );
                                 },

@@ -10,7 +10,7 @@ import 'package:onlinebooking_theatreside/data/models/theatre_model/thatre_model
 
 class TheatreDatabaseRepository {
   final theatre = FirebaseFirestore.instance.collection('theatres');
-  Future<void> addTheatreToFirestore(TheatreModel theatre) async {
+  Future<void> addTheatreToFirestore(TheatreModel theatre,String profile,List<String>images) async {
     try {
       User? currentUser = FirebaseAuth.instance.currentUser;
 
@@ -22,8 +22,8 @@ class TheatreDatabaseRepository {
           name: theatre.name,
           address: theatre.address,
           latLng: theatre.latLng, //phone: theatre.phone,
-          profileImage: theatre.profileImage,
-          images: theatre.images,
+          profileImage: profile,
+          images: images,
           phone: theatre.phone
         );
 
@@ -35,7 +35,7 @@ class TheatreDatabaseRepository {
     } catch (_) {}
   }
 
-  Future<List<String>> uploadImages(List<XFile>? selectedImages) async {
+  Future<List<String>> uploadImages(List<String>? selectedImages) async {
     if (selectedImages != null) {
       List<String> imageUrls = [];
 
@@ -45,7 +45,7 @@ class TheatreDatabaseRepository {
           Reference referenceDirectory =
               FirebaseStorage.instance.ref().child('theatre_images');
           Reference referenceImageToUpload = referenceDirectory.child(fileName);
-          await referenceImageToUpload.putFile(File(image.path));
+          await referenceImageToUpload.putFile(File(image));
           imageUrls.add(await referenceImageToUpload.getDownloadURL());
         }
       } catch (_) {}
@@ -70,10 +70,11 @@ class TheatreDatabaseRepository {
     return '';
   }
 
-  Future<void> editAccount(String name) async {
+  Future<void> editAccount(String name,String phone) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     await theatre.doc(userId).update({
       'name': name,
+      'phone':phone
     });
   }
 

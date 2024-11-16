@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:onlinebooking_theatreside/data/constants/constants.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/view_profile/ui/profile_screen.dart';
-import 'package:onlinebooking_theatreside/presentation/bookings/bokings_screen.dart';
+import 'package:onlinebooking_theatreside/presentation/bookings/ui/bokings_screen.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/customers/customers_screen.dart';
 import 'package:onlinebooking_theatreside/presentation/dashboard/dashboard_screen.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/Rooms/room_home/rooms_screen.dart';
@@ -25,7 +24,8 @@ class RoomsState extends HomeScreenState {
 }
 
 class BookingsState extends HomeScreenState {
-  BookingsState() : super(BookingsScreen()); // Replace with BookingsScreen
+  const BookingsState()
+      : super(const BookingScreen()); // Replace with BookingsScreen
 }
 
 class CustomersState extends HomeScreenState {

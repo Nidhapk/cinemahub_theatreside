@@ -70,7 +70,7 @@ class AddShowsScreen extends StatelessWidget {
                   backgroundColor: black),
             );
             context.read<ShowBloc>().add(
-                  FetchAllShows(),
+                  FetchAllShows(roomId),
                 );
             Navigator.of(context).pop();
           } else if (state is ShowAddedFailureState) {

@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:onlinebooking_theatreside/data/models/theatre_model/thatre_model.dart';
-import 'package:onlinebooking_theatreside/data/repository/theatre_database_repository.dart';
 import 'package:onlinebooking_theatreside/data/validation_methods.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/Drawer/home_screen.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/add_location/bloc/bloc_bloc.dart';
@@ -31,7 +30,7 @@ class AddProfileScreen extends StatefulWidget {
 
 class _AddProfileScreenState extends State<AddProfileScreen> {
   final ImagePicker _picker = ImagePicker();
-  List<XFile>? selectedImages;
+  List<String>? selectedImages;
   XFile? selectedImage;
   final GlobalKey<FormState> profileformKey = GlobalKey<FormState>();
 
@@ -66,7 +65,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
               },
               builder: (context, state) {
                 if (state is AddingProfileState) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -88,6 +87,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                         child: Container(
                           height: 100,
                           decoration: BoxDecoration(
+                              //border: Border.all(color: grey),
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 fit: BoxFit.fitHeight,
@@ -174,7 +174,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                               itemCount: selectedImages!.length,
                               itemBuilder: (context, index) {
                                 return Image.file(
-                                  File(selectedImages![index].path),
+                                  File(selectedImages![index]),
                                   fit: BoxFit.cover,
                                 );
                               },
@@ -188,9 +188,6 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                               String emailId =
                                   FirebaseAuth.instance.currentUser?.email ??
                                       '';
-                              List<String> imageUrls =
-                                  await TheatreDatabaseRepository()
-                                      .uploadImages(selectedImages);
 
                               // .then((value) => Navigator.of(context)
                               //     .pushAndRemoveUntil(
@@ -209,7 +206,7 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
                                     latLng: widget.latlng!,
                                     phone: phoneController.text.trim(),
                                     profileImage: selectedImage!.path,
-                                    images: imageUrls,
+                                    images: selectedImages ?? [],
                                   )));
                             }
                           },
@@ -233,14 +230,17 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
 
   Future<void> pickImages() async {
     try {
+      // Picking multiple images
       final List<XFile> pickedFiles = await _picker.pickMultiImage();
+
       if (pickedFiles.isNotEmpty) {
         setState(() {
-          selectedImages = pickedFiles;
+          // Convert XFile objects to a list of file paths
+          selectedImages = pickedFiles.map((file) => file.path).toList();
         });
       }
-    } catch (e) {
-      print('errooor image   $e');
+    } catch (_) {
+      rethrow;
     }
   }
 
@@ -253,8 +253,8 @@ class _AddProfileScreenState extends State<AddProfileScreen> {
           selectedImage = pickedFile;
         });
       }
-    } catch (e) {
-      print('errooor image   $e');
+    } catch (_) {
+      rethrow;
     }
   }
 }

@@ -28,7 +28,7 @@ class SaveImagesEvent extends TheatreEvent {
   final List<String> images;
   const SaveImagesEvent(this.images);
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [images];
 }
 
 class EditAccountEvent extends TheatreEvent {
@@ -36,7 +36,7 @@ class EditAccountEvent extends TheatreEvent {
   final String? phone;
   const EditAccountEvent({this.name, this.phone});
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [name,phone];
 }
 
 class EditAddressEvent extends TheatreEvent {}

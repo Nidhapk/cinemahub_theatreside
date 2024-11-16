@@ -44,7 +44,7 @@ class UserAuthRepository {
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return  CustomAlertBox(
+          return CustomAlertBox(
             title: 'Email not verified',
             content: 'Please verify your email before proceeding.',
             confirmText: 'Ok',
@@ -84,6 +84,23 @@ class UserAuthRepository {
   signOut() async {
     try {
       await firebase.signOut();
+    } on FirebaseAuthException catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<void> changePassword(String newPassword) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      // Update the password
+      await user.updatePassword(newPassword);
+      await user.reload();
+      print("Password successfully updated!");
+    } else {
+      print("No user is signed in.");
+    }
     } on FirebaseAuthException catch (_) {
       rethrow;
     }

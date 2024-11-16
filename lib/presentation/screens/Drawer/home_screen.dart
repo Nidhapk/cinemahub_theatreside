@@ -43,9 +43,6 @@ class HomeScreen extends StatelessWidget {
                 case BookingsState():
                   title = 'Bookings';
                   break;
-                case CustomersState():
-                  title = 'Customers';
-                  break;
                 default:
                   title = 'Profile';
               }
@@ -85,12 +82,7 @@ class HomeScreen extends StatelessWidget {
                             .add(NavigateToBookingsEvent());
                         Navigator.of(context).pop();
                         break;
-                      case 'Customers':
-                        context
-                            .read<HomeScreenBloc>()
-                            .add(NavigateToCustomersEvent());
-                        Navigator.of(context).pop();
-                        break;
+
                       case 'Profile':
                         context
                             .read<HomeScreenBloc>()

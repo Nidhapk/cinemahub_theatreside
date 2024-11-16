@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/privacy_policy/ui/widgets/policy.dart';
-import 'package:onlinebooking_theatreside/presentation/screens/profile/privacy_policy/ui/widgets/sub_content.dart';
 import 'package:onlinebooking_theatreside/presentation/screens/profile/privacy_policy/ui/widgets/sub_contents.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
@@ -9,9 +8,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+   // final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 17, 17, 17),
+      backgroundColor: const Color.fromARGB(255, 17, 17, 17),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
